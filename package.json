@@ -1,0 +1,9 @@
+{
+  "name": "costs-observer",
+  "version": "1.0.0",
+  "description": "The app for costs observing",
+  "main": "program.js",
+  "scripts": {},
+  "author": "ZelVet",
+  "license": "ISC"
+}
