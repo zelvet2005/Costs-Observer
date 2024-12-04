@@ -1,3 +1,60 @@
 * {
   margin: 0;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 75px;
+  background-color: rgb(99, 99, 99);
+  color: white;
+  padding-left: 15px;
+}
+
+.btns {
+  height: 100px;
+  padding: 0 30px;
+}
+
+.logo {
+  height: 48px;
+  width: 48px;
+}
+
+header > h1 {
+  font-size: 2.2rem;
+}
+
+.sort-btns,
+.manage-btns {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.sort-btns {
+  float: left;
+}
+
+.manage-btns {
+  float: right;
+}
+
+.sort-btns > button,
+.manage-btns > button {
+  height: 40px;
+  font-size: 1rem;
+}
+
+.sort-btns > button {
+  width: 150px;
+}
+
+.manage-btns > button {
+  width: 100px;
+}
