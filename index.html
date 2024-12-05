@@ -16,17 +16,44 @@
       <h1>Costs Observer</h1>
     </header>
     <main>
-      <div class="btns">
+      <section class="btns">
         <ul class="sort-btns">
           <button>Ascending sort</button>
           <button>Descending sort</button>
           <button>Alphabetical sort</button>
         </ul>
         <ul class="manage-btns">
-          <button>Delete All</button>
-          <button>Add</button>
+          <button class="delete-all-btn">
+            <span>Delete All</span>
+            <img src="./images/trashbucket.svg" alt="trash bucket" />
+          </button>
+          <button class="add-btn">
+            <span>Add</span>
+            <img src="./images/plus.svg" alt="plus" />
+          </button>
         </ul>
-      </div>
+      </section>
+      <section class="costs-observers-container">
+        <div class="costs-observer">
+          <!--  -->
+          <button class="edit-btn">
+            <img src="./images/pencil.svg" alt="pencil" />
+          </button>
+          <button class="delete-btn">
+            <img src="./images/trashbucket.svg" alt="trash bucket" />
+          </button>
+
+          <h2>Products</h2>
+          <span>Update after <i>12/12/2024</i></span>
+          <div>
+            <input type="text" value="1200" /> / <span>1500</span>
+            <span>$</span>
+          </div>
+
+          <button class="history">History</button>
+          <!--  -->
+        </div>
+      </section>
     </main>
     <footer></footer>
   </body>

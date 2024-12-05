@@ -13,7 +13,7 @@ header {
 }
 
 .btns {
-  height: 100px;
+  height: 110px;
   padding: 0 30px;
 }
 
@@ -49,12 +49,56 @@ header > h1 {
 .manage-btns > button {
   height: 40px;
   font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .sort-btns > button {
   width: 150px;
+  background: linear-gradient(135deg, #e0f7fa, #b3e5fc);
+}
+
+.sort-btns > button:hover {
+  background: linear-gradient(135deg, #c4f5ff, #8ed1f0);
 }
 
 .manage-btns > button {
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.add-btn {
+  width: 85px;
+  background: linear-gradient(135deg, #d1ffc1, #afffbd);
+}
+
+.add-btn:hover {
+  background: linear-gradient(135deg, #beffa8, #88e99a);
+}
+
+.delete-all-btn {
+  width: 120px;
+  background: linear-gradient(135deg, #ffc5c5, #ff9d9d);
+}
+
+.delete-all-btn:hover {
+  background: linear-gradient(135deg, #ffb5b5, #f58888);
+}
+
+.add-btn img,
+.delete-all-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.delete-btn img {
+  width: 23px;
+  height: 23px;
+}
+
+.edit-btn img {
+  width: 26px;
+  height: 26px;
 }
