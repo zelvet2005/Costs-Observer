@@ -12,7 +12,12 @@
   </head>
   <body>
     <header>
-      <img src="images/moneybag.svg" alt="money bag" class="logo" />
+      <img
+        src="images/moneybag.svg"
+        alt="money bag"
+        class="logo"
+        draggable="false"
+      />
       <h1>Costs Observer</h1>
     </header>
     <main>
@@ -25,34 +30,53 @@
         <ul class="manage-btns">
           <button class="delete-all-btn">
             <span>Delete All</span>
-            <img src="./images/trashbucket.svg" alt="trash bucket" />
+            <img
+              src="./images/trashbucket.svg"
+              alt="trash bucket"
+              draggable="false"
+            />
           </button>
           <button class="add-btn">
             <span>Add</span>
-            <img src="./images/plus.svg" alt="plus" />
+            <img src="./images/plus.svg" alt="plus" draggable="false" />
           </button>
         </ul>
       </section>
       <section class="costs-observers-container">
+        <!--  -->
         <div class="costs-observer">
-          <!--  -->
-          <button class="edit-btn">
-            <img src="./images/pencil.svg" alt="pencil" />
-          </button>
-          <button class="delete-btn">
-            <img src="./images/trashbucket.svg" alt="trash bucket" />
-          </button>
+          <div class="costs-observer-btns-panel">
+            <button class="delete-btn">
+              <img
+                src="./images/trashbucket.svg"
+                alt="trash bucket"
+                draggable="false"
+              />
+            </button>
+            <button class="edit-btn">
+              <img src="./images/pencil.svg" alt="pencil" draggable="false" />
+            </button>
+          </div>
 
           <h2>Products</h2>
-          <span>Update after <i>12/12/2024</i></span>
-          <div>
-            <input type="text" value="1200" /> / <span>1500</span>
-            <span>$</span>
+          <span class="date-label">Update after <i>12/12/2024</i></span>
+
+          <div class="balance-container">
+            <input
+              class="balance"
+              type="number"
+              value="1200"
+              min="1"
+              max="99999"
+            />
+            /
+            <span class="limit">1200</span>
+            <span class="currency">$</span>
           </div>
 
           <button class="history">History</button>
-          <!--  -->
         </div>
+        <!--  -->
       </section>
     </main>
     <footer></footer>

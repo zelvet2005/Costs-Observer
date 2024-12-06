@@ -83,6 +83,11 @@ header > h1 {
   background: linear-gradient(135deg, #ffc5c5, #ff9d9d);
 }
 
+.delete-all-btn > img {
+  position: relative;
+  bottom: 2px;
+}
+
 .delete-all-btn:hover {
   background: linear-gradient(135deg, #ffb5b5, #f58888);
 }
@@ -93,12 +98,85 @@ header > h1 {
   height: 20px;
 }
 
-.delete-btn img {
-  width: 23px;
-  height: 23px;
+.costs-observers-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  padding: 20px 40px;
 }
 
-.edit-btn img {
-  width: 26px;
-  height: 26px;
+.costs-observer {
+  width: 300px;
+  min-height: 400px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgb(175, 175, 175);
+  word-wrap: break-word;
+}
+
+.costs-observer-btns-panel {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 4px;
+  margin-bottom: 5px;
+  padding-right: 2px;
+}
+
+.costs-observer-btns-panel > button {
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 16px;
+}
+
+.edit-btn:hover {
+  background-color: rgb(255, 240, 145);
+}
+
+.edit-btn > img {
+  width: 95%;
+  height: 95%;
+}
+
+.delete-btn:hover {
+  background-color: rgb(255, 121, 121);
+}
+
+.delete-btn > img {
+  width: 92%;
+  height: 92%;
+}
+
+.costs-observer > h2 {
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+.date-label {
+  color: rgb(82, 82, 82);
+  font-size: 0.9rem;
+}
+
+.balance-container {
+  width: 175px;
+  height: 175px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+  border: 5px solid rgb(19, 202, 25);
+  border-radius: 100px;
+  font-size: 1.6rem;
+}
+
+.balance {
+  width: 5.5ch;
+  font-size: 1.6rem;
+  font-family: "Times New Roman", Times, serif;
 }
