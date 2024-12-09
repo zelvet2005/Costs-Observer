@@ -230,3 +230,86 @@ header > h1 {
 .history:hover {
   background-color: rgb(255, 240, 145);
 }
+
+footer {
+  height: 150px;
+  margin-top: 60px;
+  background-color: rgb(99, 99, 99);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.quotes {
+  width: 290px;
+  height: 30px;
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  animation: slider;
+  animation-iteration-count: infinite;
+  animation-duration: 30s;
+}
+
+#first-quote,
+#second-quote,
+#third-quote {
+  position: absolute;
+}
+
+#second-quote {
+  left: 100%;
+}
+
+#third-quote {
+  left: 200%;
+}
+
+.cash {
+  height: 40px;
+  width: 80px;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+}
+
+@keyframes slider {
+  16% {
+    transform: translateX(0);
+  }
+  33% {
+    transform: translateX(-100%);
+  }
+  49% {
+    transform: translateX(-100%);
+  }
+  66% {
+    transform: translateX(-200%);
+  }
+  83% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(25deg);
+  }
+}
