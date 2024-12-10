@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header class="main-header">
       <img
         src="images/moneybag.svg"
         alt="money bag"
@@ -87,5 +87,33 @@
       </section>
       <img src="./images/cash.svg" alt="cash" class="cash" draggable="false" />
     </footer>
+    <dialog class="manage-observer-dialog">
+      <header class="manage-header">
+        <h3>Add observer</h3>
+        <button class="close-btn">
+          <img src="images/cross.svg" alt="cross" />
+        </button>
+      </header>
+      <form class="manage-form">
+        <label for="name">Enter the name:</label>
+        <input type="text" id="name" />
+        <label for="frequency">Enter the repetition (in days):</label>
+        <input type="number" id="frequency" min="1" max="365" />
+        <label for="limit">Enter the limit:</label>
+        <input type="number" id="limit" min="1" max="99999" />
+        <div class="currency-dialog">
+          <label for="currency">Choose the currency:</label>
+          <select name="currency" id="currency">
+            <option>₴ Hryvnia (UAH)</option>
+            <option>$ Dollar (USD)</option>
+            <option>€ Euro (EUR)</option>
+            <option>¥ Yen (JPY)</option>
+            <option>£ Pound (GBP)</option>
+          </select>
+        </div>
+        <button>Save</button>
+      </form>
+    </dialog>
+    <dialog class="history-dialog"></dialog>
   </body>
 </html>

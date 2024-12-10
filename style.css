@@ -6,7 +6,7 @@ button {
   font-family: "Times New Roman", Times, serif;
 }
 
-header {
+.main-header {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -26,7 +26,7 @@ header {
   width: 48px;
 }
 
-header > h1 {
+.main-header > h1 {
   font-size: 2.2rem;
 }
 
@@ -279,6 +279,95 @@ footer {
   animation-name: rotate;
   animation-iteration-count: infinite;
   animation-duration: 10s;
+}
+
+dialog {
+  height: 350px;
+  width: 300px;
+  position: absolute;
+  top: 25%;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.manage-observer-dialog {
+  font-size: 1.2rem;
+}
+
+.manage-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.manage-header h3 {
+  font-size: 1.6rem;
+}
+
+.close-btn {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 18px;
+}
+
+.close-btn:hover {
+  background-color: rgb(255, 121, 121);
+}
+
+.close-btn > img {
+  height: 75%;
+  width: 75%;
+}
+
+.manage-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.manage-form > * {
+  margin-top: 3px;
+}
+
+#currency {
+  width: 44%;
+  height: 22px;
+}
+
+.manage-form > button {
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  margin: 30px auto;
+}
+
+.manage-form > button:hover {
+  background-color: rgb(136, 246, 134);
+}
+
+.manage-form > input {
+  height: 20px;
+  font-size: 1.1rem;
+  padding: 2px 5px;
+}
+
+.manage-form > input,
+#currency {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+}
+
+#currency {
+  font-size: 0.9rem;
 }
 
 @keyframes slider {
