@@ -96,15 +96,35 @@
       </header>
       <form class="manage-form">
         <label for="name">Enter the name:</label>
-        <input type="text" id="name" />
+        <input
+          type="text"
+          id="name"
+          maxlength="40"
+          placeholder="Max 40 characters"
+          required
+        />
         <label for="frequency">Enter the repetition (in days):</label>
-        <input type="number" id="frequency" min="1" max="365" />
+        <input
+          type="number"
+          id="frequency"
+          min="1"
+          max="365"
+          placeholder="From 1 to 365"
+          required
+        />
         <label for="limit">Enter the limit:</label>
-        <input type="number" id="limit" min="1" max="99999" />
+        <input
+          type="number"
+          id="limit"
+          min="1"
+          max="99999"
+          placeholder="From 1 to 99999"
+          required
+        />
         <div class="currency-dialog">
           <label for="currency">Choose the currency:</label>
           <select name="currency" id="currency">
-            <option>₴ Hryvnia (UAH)</option>
+            <option selected>₴ Hryvnia (UAH)</option>
             <option>$ Dollar (USD)</option>
             <option>€ Euro (EUR)</option>
             <option>¥ Yen (JPY)</option>
