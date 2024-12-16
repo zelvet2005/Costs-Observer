@@ -1,29 +1,25 @@
 * {
   margin: 0;
-}
-
-button {
   font-family: "Times New Roman", Times, serif;
 }
 
 .main-header {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.5%;
   height: 75px;
   background-color: rgb(99, 99, 99);
   color: white;
-  padding-left: 15px;
+  padding-left: 1.5%;
 }
 
 .btns {
   height: 110px;
-  padding: 0 30px;
+  padding: 0 2%;
 }
 
 .logo {
-  height: 48px;
-  width: 48px;
+  height: 64%;
 }
 
 .main-header > h1 {
@@ -37,21 +33,22 @@ button {
   margin: 0;
   height: 100%;
   display: flex;
-  gap: 25px;
   align-items: center;
 }
 
 .sort-btns {
   float: left;
+  gap: 5%;
 }
 
 .manage-btns {
   float: right;
+  gap: 11%;
 }
 
 .sort-btns > button,
 .manage-btns > button {
-  height: 40px;
+  height: 35%;
   font-size: 1rem;
   border: 1px solid black;
   border-radius: 10px;
@@ -70,7 +67,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 4%;
 }
 
 .add-btn {
@@ -98,22 +95,22 @@ button {
 
 .add-btn img,
 .delete-all-btn img {
-  width: 20px;
-  height: 20px;
+  height: 55%;
 }
 
 .costs-observers-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 80px;
-  padding: 20px 40px;
+  row-gap: 50px;
+  column-gap: 50px;
+  padding: 2% 4%;
 }
 
 .costs-observer {
-  width: 300px;
+  width: 20%;
   min-height: 400px;
-  padding: 5px;
+  padding: 0.5%;
   border: 1px solid black;
   border-radius: 20px;
   box-shadow: 5px 5px 15px rgb(175, 175, 175);
@@ -123,9 +120,9 @@ button {
 .costs-observer-btns-panel {
   display: flex;
   flex-direction: row-reverse;
-  gap: 4px;
-  margin-bottom: 10px;
-  padding-right: 2px;
+  gap: 1.5%;
+  margin-bottom: 5%;
+  padding-right: 0.5%;
 }
 
 .costs-observer-btns-panel > button {
@@ -174,22 +171,21 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  margin-top: 15px;
+  gap: 5%;
+  margin-top: 5%;
   border: 8px solid rgb(72, 222, 12);
   border-radius: 100px;
   font-size: 1.6rem;
 }
 
 .balance-limit {
-  margin-bottom: -100px;
+  margin-bottom: -55%;
 }
 
 .balance,
 .limit {
   width: 5.5ch;
   font-size: 1.6rem;
-  font-family: "Times New Roman", Times, serif;
   border: none;
   background: none;
 }
@@ -201,7 +197,6 @@ button {
 .limit {
   text-align: right;
   color: black;
-  padding-right: 3px;
 }
 
 .currency {
@@ -218,8 +213,8 @@ button {
 }
 
 .history {
-  margin-top: 30px;
-  width: 120px;
+  margin-top: 10%;
+  width: 45%;
   height: 30px;
   font-size: 1rem;
   border: 1px solid black;
@@ -233,7 +228,7 @@ button {
 
 footer {
   height: 150px;
-  margin-top: 60px;
+  margin-top: 4%;
   background-color: rgb(99, 99, 99);
   color: white;
   display: flex;
@@ -243,8 +238,8 @@ footer {
 }
 
 .quotes {
-  width: 290px;
-  height: 30px;
+  width: 20%;
+  height: 20%;
   font-size: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -252,7 +247,6 @@ footer {
 
 .quote {
   width: 100%;
-  height: 30px;
   text-align: center;
   animation: slider;
   animation-iteration-count: infinite;
@@ -274,8 +268,8 @@ footer {
 }
 
 .cash {
-  height: 40px;
-  width: 80px;
+  height: 25%;
+  width: 5%;
   animation-name: rotate;
   animation-iteration-count: infinite;
   animation-duration: 10s;
@@ -289,7 +283,7 @@ dialog {
   margin: 0 auto;
   border: 1px solid black;
   border-radius: 15px;
-  padding: 10px;
+  padding: 0.7%;
 }
 
 .manage-observer-dialog {
@@ -308,8 +302,7 @@ dialog {
 }
 
 .close-btn {
-  width: 30px;
-  height: 30px;
+  width: 10%;
   padding: 0;
   background-color: white;
   border: 1px solid black;
@@ -328,12 +321,11 @@ dialog {
 .manage-form {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-top: 15px;
+  margin-top: 5%;
 }
 
 .manage-form > * {
-  margin-top: 3px;
+  margin-top: 8px;
 }
 
 #currency {
@@ -342,13 +334,12 @@ dialog {
 }
 
 .manage-form > button {
-  width: 100px;
-  height: 25px;
+  width: 35%;
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;
   font-size: 1.1rem;
-  margin: 30px auto;
+  margin: 10% auto;
 }
 
 .manage-form > button:hover {
@@ -356,16 +347,14 @@ dialog {
 }
 
 .manage-form > input {
-  height: 20px;
   font-size: 1.1rem;
-  padding: 2px 5px;
+  padding: 0.5% 1%;
 }
 
 .manage-form > input,
 #currency {
   border: 1px solid black;
   border-radius: 5px;
-  font-family: "Times New Roman", Times, serif;
 }
 
 #currency {
@@ -373,14 +362,13 @@ dialog {
 }
 
 .history-dialog {
-  width: 330px;
   height: 400px;
 }
 
 .costs-history {
   list-style: none;
   padding: 0;
-  margin-top: 15px;
+  margin-top: 5%;
 }
 
 .costs-history > li {
