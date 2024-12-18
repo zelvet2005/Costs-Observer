@@ -490,6 +490,17 @@ dialog {
   .quotes {
     width: 60%;
   }
+  .sort-btns > button {
+    font-size: 0.85rem;
+  }
+  .balance,
+  .limit {
+    width: 5.5ch;
+    font-size: 1.4rem;
+  }
+  .currency {
+    font-size: 2rem;
+  }
 }
 @media (max-width: 410px) {
   .sort-btns > button {
