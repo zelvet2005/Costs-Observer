@@ -108,8 +108,8 @@
 }
 
 .costs-observer {
-  width: 20%;
-  min-height: 400px;
+  width: 300px;
+  height: 420px;
   padding: 0.5%;
   border: 1px solid black;
   border-radius: 20px;
@@ -421,3 +421,83 @@ dialog {
     transform: rotate(25deg);
   }
 }
+
+/* mobile */
+@media (max-width: 1450px) {
+  .quotes {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 1250px) {
+  .quotes {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 1075px) {
+  .quotes {
+    width: 25%;
+  }
+}
+@media (max-width: 900px) {
+  .quotes {
+    width: 30%;
+    margin: 0 2%;
+  }
+  .date-label {
+    margin-left: 5px;
+  }
+}
+@media (max-width: 725px) {
+  .btns {
+    display: grid;
+    grid-template-areas:
+      "manage-btns"
+      "sort-btns";
+    grid-template-rows: 55px 55px;
+    margin-top: 10px;
+  }
+  .sort-btns {
+    grid-area: sort-btns;
+    gap: 3%;
+  }
+  .manage-btns {
+    grid-area: manage-btns;
+    gap: 3%;
+  }
+  .sort-btns > button,
+  .manage-btns > button {
+    height: 70%;
+  }
+  .sort-btns > button,
+  .delete-all-btn {
+    width: 125px;
+  }
+  .quotes {
+    width: 35%;
+  }
+}
+@media (max-width: 625px) {
+  .quotes {
+    width: 42%;
+  }
+}
+@media (max-width: 525px) {
+  .quotes {
+    width: 50%;
+  }
+}
+@media (max-width: 450px) {
+  .quotes {
+    width: 60%;
+  }
+}
+@media (max-width: 410px) {
+  .sort-btns > button {
+    width: 100px;
+    height: 75%;
+  }
+  .quotes {
+    width: 65%;
+  }
+}
+/* mobile */
