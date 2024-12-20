@@ -207,10 +207,6 @@ main {
   font-size: 2.2rem;
 }
 
-.balance-container > .history {
-  justify-content: center;
-}
-
 .history-container {
   display: flex;
   justify-content: center;
@@ -335,6 +331,7 @@ dialog {
 #currency {
   width: 44%;
   height: 22px;
+  font-size: 0.9rem;
 }
 
 .manage-form > button {
@@ -359,10 +356,6 @@ dialog {
 #currency {
   border: 1px solid black;
   border-radius: 5px;
-}
-
-#currency {
-  font-size: 0.9rem;
 }
 
 .history-dialog {
@@ -426,7 +419,6 @@ dialog {
   }
 }
 
-/* mobile */
 @media (max-width: 1450px) {
   .quotes {
     font-size: 1.3rem;
@@ -515,4 +507,115 @@ dialog {
     width: 65%;
   }
 }
-/* mobile */
+
+@media (min-width: 1550px) {
+  .main-header {
+    height: 10vh;
+  }
+  .btns {
+    height: 12vh;
+  }
+  .sort-btns > button {
+    width: 10vw;
+  }
+  .add-btn {
+    width: 6vw;
+  }
+  .delete-all-btn {
+    width: 9vw;
+  }
+  footer {
+    height: 15vh;
+  }
+}
+@media (min-width: 1600px) {
+  .main-header > h1 {
+    font-size: 2.8rem;
+  }
+  .btns button {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 1800px) {
+  .btns button {
+    font-size: 1.2rem;
+  }
+  .costs-observers-container {
+    row-gap: 100px;
+    column-gap: 100px;
+  }
+  .costs-observer {
+    width: 400px;
+    height: 550px;
+    border-radius: 25px;
+  }
+  .costs-observer-btns-panel > button {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+  .costs-observer > h2 {
+    font-size: 1.9rem;
+  }
+  .date-label {
+    font-size: 1.3rem;
+  }
+  .balance-container {
+    width: 240px;
+    height: 240px;
+    border-radius: 130px;
+    font-size: 2.2rem;
+  }
+  .balance,
+  .limit {
+    font-size: 2.2rem;
+  }
+  .currency {
+    font-size: 2.6rem;
+  }
+  .history {
+    width: 45%;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+  dialog {
+    height: 450px;
+    width: 400px;
+    border-radius: 25px;
+  }
+  .manage-observer-dialog {
+    font-size: 1.6rem;
+  }
+  .manage-header h3,
+  .history-header h3 {
+    font-size: 2rem;
+  }
+  .close-btn {
+    width: 9.5%;
+  }
+  .manage-form > * {
+    margin-top: 10px;
+  }
+  #currency {
+    height: 30px;
+    font-size: 1.2rem;
+  }
+  .manage-form > button {
+    height: 32px;
+    border-radius: 10px;
+    font-size: 1.4rem;
+  }
+  .manage-form > input {
+    font-size: 1.4rem;
+  }
+  .history-dialog {
+    height: 500px;
+  }
+  .costs-history > li {
+    height: 50px;
+    font-size: 1.3rem;
+  }
+  .empty-history {
+    font-size: 2.5rem;
+  }
+}
