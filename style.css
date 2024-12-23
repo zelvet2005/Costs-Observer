@@ -501,6 +501,9 @@ dialog::backdrop {
   .currency {
     font-size: 2rem;
   }
+  dialog {
+    padding: 5px;
+  }
 }
 @media (max-width: 410px) {
   .sort-btns > button {
