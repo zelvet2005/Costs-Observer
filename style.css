@@ -502,7 +502,7 @@ dialog::backdrop {
     font-size: 2rem;
   }
   dialog {
-    padding: 5px;
+    padding: 10px;
   }
 }
 @media (max-width: 410px) {
