@@ -9,6 +9,7 @@
     <title>Costs Observer</title>
     <link rel="icon" href="images/moneybag.svg" />
     <link rel="stylesheet" href="style.css" />
+    <script type="module" src="classes/App.js"></script>
   </head>
   <body>
     <header class="main-header">
@@ -42,41 +43,7 @@
           </button>
         </ul>
       </section>
-      <section class="costs-observers-container">
-        <div class="costs-observer">
-          <span class="date-label">Update after <i>12/12/2024</i></span>
-          <div class="costs-observer-btns-panel">
-            <button class="delete-btn">
-              <img
-                src="./images/trashbucket.svg"
-                alt="trash bucket"
-                draggable="false"
-              />
-            </button>
-            <button class="edit-btn">
-              <img src="./images/pencil.svg" alt="pencil" draggable="false" />
-            </button>
-          </div>
-          <h2>Products</h2>
-          <div class="balance-container">
-            <div class="balance-limit">
-              <input
-                class="balance"
-                type="number"
-                value="1200"
-                min="1"
-                max="99999"
-              />
-              <b>/</b>
-              <input disabled value="1200" class="limit" />
-            </div>
-            <span class="currency">$</span>
-          </div>
-          <div class="history-container">
-            <button class="history">History</button>
-          </div>
-        </div>
-      </section>
+      <section class="costs-observers-container"></section>
     </main>
     <footer>
       <img src="./images/cash.svg" alt="cash" class="cash" draggable="false" />
@@ -99,14 +66,17 @@
         <input
           type="text"
           id="name"
+          name="name"
+          minlength="1"
           maxlength="40"
-          placeholder="Max 40 characters"
+          placeholder="From 1 to 40 characters"
           required
         />
         <label for="frequency">Enter the repetition (in days):</label>
         <input
           type="number"
           id="frequency"
+          name="frequency"
           min="1"
           max="365"
           placeholder="From 1 to 365"
@@ -116,22 +86,23 @@
         <input
           type="number"
           id="limit"
+          name="limit"
           min="1"
-          max="99999"
-          placeholder="From 1 to 99999"
+          max="9999"
+          placeholder="From 1 to 9999"
           required
         />
         <div class="currency-dialog">
           <label for="currency">Choose the currency:</label>
-          <select name="currency" id="currency">
-            <option selected>₴ Hryvnia (UAH)</option>
-            <option>$ Dollar (USD)</option>
-            <option>€ Euro (EUR)</option>
-            <option>¥ Yen (JPY)</option>
-            <option>£ Pound (GBP)</option>
+          <select name="currency" id="currency" name="currency">
+            <option value="₴" selected>₴ Hryvnia (UAH)</option>
+            <option value="$">$ Dollar (USD)</option>
+            <option value="€">€ Euro (EUR)</option>
+            <option value="¥">¥ Yen (JPY)</option>
+            <option value="£">£ Pound (GBP)</option>
           </select>
         </div>
-        <button>Save</button>
+        <button type="submit" class="save-btn">Save</button>
       </form>
     </dialog>
     <dialog class="history-dialog">

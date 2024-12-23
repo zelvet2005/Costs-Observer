@@ -286,6 +286,10 @@ dialog {
   padding: 0.7%;
 }
 
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+
 .manage-observer-dialog {
   font-size: 1.2rem;
 }
