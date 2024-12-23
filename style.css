@@ -276,7 +276,7 @@ footer {
 }
 
 dialog {
-  height: 350px;
+  min-height: 350px;
   width: 300px;
   position: absolute;
   top: 25%;
