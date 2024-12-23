@@ -13,16 +13,16 @@ export class CostObserver {
     limit,
     currency,
     currentBalance = limit,
-    history = [],
-    updateAfter = null
+    updateAfter = null,
+    history = []
   ) {
     this.name = name;
     this.frequency = +frequency;
     this.limit = +limit;
     this.currency = currency;
     this.currentBalance = +currentBalance;
-    this.history = history;
     this.updateAfter = updateAfter ?? this.computeUpdateAfter();
+    this.history = history;
   }
 
   render() {
