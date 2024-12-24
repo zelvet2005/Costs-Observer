@@ -19,7 +19,7 @@ export class DataStorage {
   getCostsObservers() {
     const data = JSON.parse(localStorage.getItem(this.#keyLs));
     data.map((obj) => {
-      const costsObserver = this.convertIntoCostsObserver(obj);
+      const costsObserver = new CostObserver(obj);
       this.costsObservers.push(costsObserver);
     });
   }
@@ -31,9 +31,5 @@ export class DataStorage {
   removeCostsObserver() {}
   removeAllCostsObservers() {
     this.costsObservers = [];
-  }
-
-  convertIntoCostsObserver(data) {
-    return new CostObserver(...Object.values(data));
   }
 }

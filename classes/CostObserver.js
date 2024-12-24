@@ -6,28 +6,31 @@ export class CostObserver {
   currentBalance;
   updateAfter;
   history;
+  id;
 
-  constructor(
+  constructor({
     name,
     frequency,
     limit,
     currency,
+    id,
     currentBalance = limit,
+    history = [],
     updateAfter = null,
-    history = []
-  ) {
+  }) {
     this.name = name;
     this.frequency = +frequency;
     this.limit = +limit;
     this.currency = currency;
+    this.id = id;
     this.currentBalance = +currentBalance;
-    this.updateAfter = updateAfter ?? this.computeUpdateAfter();
     this.history = history;
+    this.updateAfter = updateAfter ?? this.computeUpdateAfter();
   }
 
   render() {
     return `
-        <div class="costs-observer">
+        <div class="costs-observer" data-id="${this.id}">
           <span class="date-label">Update after <i>${this.updateAfter}</i></span>
           <div class="costs-observer-btns-panel">
             <button class="delete-btn">
@@ -44,9 +47,7 @@ export class CostObserver {
                 class="balance"
                 type="number"
                 value="${this.currentBalance}"
-                min="1"
-                max="99999"
-              />
+                min="1" max="99999" />
               <b>/</b>
               <input disabled value="${this.limit}" class="limit" />
             </div>

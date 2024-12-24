@@ -7,6 +7,9 @@ const costsObserversContainer = document.querySelector(
 
 const addObserverBtn = document.querySelector(".add-btn");
 const deleteAllObserversBtn = document.querySelector(".delete-all-btn");
+const alphabetSortBtn = document.querySelector(".alphabet-sort-btn");
+const descSortBtn = document.querySelector(".desc-sort-btn");
+const ascSortBtn = document.querySelector(".asc-sort-btn");
 
 const manageObserverDialog = document.querySelector(".manage-observer-dialog");
 const manageDialogCloseBtn = manageObserverDialog.querySelector(".close-btn");
@@ -31,6 +34,18 @@ class App {
       "click",
       this.deleteAllCostsObserversHandler.bind(this)
     );
+    alphabetSortBtn.addEventListener(
+      "click",
+      this.alphabetSortCostsObserversHandler.bind(this)
+    );
+    descSortBtn.addEventListener(
+      "click",
+      this.descSortCostsObserversHandler.bind(this)
+    );
+    ascSortBtn.addEventListener(
+      "click",
+      this.ascSortCostsObserversHandler.bind(this)
+    );
 
     this.boundCloseDialogHandler = this.closeManageDialogHandler.bind(this);
     this.boundSaveInfoHandler = this.saveInfoHandler.bind(this);
@@ -46,22 +61,51 @@ class App {
     );
   }
 
-  clearForm() {
-    nameInput.value = "";
-    frequencyInput.value = "";
-    limitInput.value = "";
-    currencyOption.value = "₴";
-  }
-
   deleteAllCostsObserversHandler() {
     this.dataStorage.removeAllCostsObservers();
     this.dataStorage.setCostsObservers();
     this.updateUI();
   }
 
-  alphabetSortCostsObserversHandler() {}
-  descSortCostsObserversHandler() {}
-  ascSortCostsObserversHandler() {}
+  alphabetSortCostsObserversHandler() {
+    this.dataStorage.costsObservers.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    this.updateUI();
+    this.dataStorage.setCostsObservers();
+  }
+  ascSortCostsObserversHandler() {
+    this.dataStorage.costsObservers.sort(
+      (a, b) =>
+        this.convertToHryvnia(a.currentBalance, a.currency) -
+        this.convertToHryvnia(b.currentBalance, b.currency)
+    );
+    this.updateUI();
+    this.dataStorage.setCostsObservers();
+  }
+  descSortCostsObserversHandler() {
+    this.dataStorage.costsObservers.sort(
+      (a, b) =>
+        this.convertToHryvnia(b.currentBalance, b.currency) -
+        this.convertToHryvnia(a.currentBalance, a.currency)
+    );
+    this.updateUI();
+    this.dataStorage.setCostsObservers();
+  }
+  convertToHryvnia(sum, currencyType) {
+    switch (currencyType) {
+      case "$":
+        return sum * 42;
+      case "€":
+        return sum * 43;
+      case "¥":
+        return sum * 0.3;
+      case "£":
+        return sum * 52;
+      default:
+        return sum;
+    }
+  }
 
   deleteCostsObserverHandler() {}
 
@@ -86,7 +130,14 @@ class App {
     const frequency = frequencyInput.value;
     const limit = limitInput.value;
     const currency = currencyOption.value;
-    const costsObserver = new CostObserver(name, frequency, limit, currency);
+    const id = `${name}-${this.dataStorage.costsObservers.length}`;
+    const costsObserver = new CostObserver({
+      name,
+      frequency,
+      limit,
+      currency,
+      id,
+    });
 
     costsObserversContainer.insertAdjacentHTML(
       "beforeend",
@@ -100,6 +151,12 @@ class App {
       this.boundCloseDialogHandler
     );
     manageObserverDialog.close();
+  }
+  clearForm() {
+    nameInput.value = "";
+    frequencyInput.value = "";
+    limitInput.value = "";
+    currencyOption.value = "₴";
   }
 }
 
