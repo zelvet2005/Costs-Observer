@@ -68,5 +68,4 @@ export class CostObserver {
 
   changeCurrentBalanceHandler() {}
   checkCostsHistoryHandler() {}
-  changeInfoHanlder() {}
 }

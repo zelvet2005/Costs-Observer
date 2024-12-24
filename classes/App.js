@@ -47,6 +47,11 @@ class App {
       this.ascSortCostsObserversHandler.bind(this)
     );
 
+    costsObserversContainer.addEventListener(
+      "click",
+      this.deleteCostsObserverHandler.bind(this)
+    );
+
     this.boundCloseDialogHandler = this.closeManageDialogHandler.bind(this);
     this.boundSaveInfoHandler = this.saveInfoHandler.bind(this);
   }
@@ -59,12 +64,6 @@ class App {
         costsObserver.render()
       )
     );
-  }
-
-  deleteAllCostsObserversHandler() {
-    this.dataStorage.removeAllCostsObservers();
-    this.dataStorage.setCostsObservers();
-    this.updateUI();
   }
 
   alphabetSortCostsObserversHandler() {
@@ -107,7 +106,11 @@ class App {
     }
   }
 
-  deleteCostsObserverHandler() {}
+  deleteAllCostsObserversHandler() {
+    this.dataStorage.removeAllCostsObservers();
+    this.dataStorage.setCostsObservers();
+    this.updateUI();
+  }
 
   addCostsObserverHandler() {
     manageObserverDialog.showModal();
@@ -158,6 +161,22 @@ class App {
     limitInput.value = "";
     currencyOption.value = "₴";
   }
+
+  deleteCostsObserverHandler(event) {
+    if (
+      event.target.classList.contains("delete-btn") ||
+      event.target.parentElement.classList.contains("delete-btn")
+    ) {
+      const costsObserver = event.target.closest(".costs-observer");
+      const index = this.dataStorage.costsObservers.findIndex(
+        (observer) => observer.id === costsObserver.dataset.id
+      );
+      this.dataStorage.costsObservers.splice(index, 1);
+      this.updateUI();
+      this.dataStorage.setCostsObservers();
+    }
+  }
+  changeInfoHanlder() {}
 }
 
 const app = new App();
