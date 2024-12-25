@@ -13,18 +13,18 @@ export class CostObserver {
     frequency,
     limit,
     currency,
-    id,
     currentBalance = limit,
     history = [],
+    id = null,
     updateAfter = null,
   }) {
     this.name = name;
     this.frequency = +frequency;
     this.limit = +limit;
     this.currency = currency;
-    this.id = id;
     this.currentBalance = +currentBalance;
     this.history = history;
+    this.id = id ?? this.generateId();
     this.updateAfter = updateAfter ?? this.computeUpdateAfter();
   }
 
@@ -64,6 +64,10 @@ export class CostObserver {
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + this.frequency);
     return currentDate.toLocaleDateString();
+  }
+  generateId() {
+    const randomNumber = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    return `${this.name}-${randomNumber}`;
   }
 
   changeCurrentBalanceHandler() {}

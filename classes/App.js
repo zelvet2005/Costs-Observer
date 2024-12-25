@@ -133,13 +133,11 @@ class App {
     const frequency = frequencyInput.value;
     const limit = limitInput.value;
     const currency = currencyOption.value;
-    const id = `${name}-${this.dataStorage.costsObservers.length}`;
     const costsObserver = new CostObserver({
       name,
       frequency,
       limit,
       currency,
-      id,
     });
 
     costsObserversContainer.insertAdjacentHTML(
