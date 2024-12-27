@@ -28,8 +28,15 @@ export class DataStorage {
     this.costsObservers.push(costsObserver);
     this.setCostsObservers();
   }
-  removeCostsObserver() {}
+  removeCostsObserver(costsObserverElement) {
+    const index = this.costsObservers.findIndex(
+      (observer) => observer.id === costsObserverElement.dataset.id
+    );
+    this.costsObservers.splice(index, 1);
+    this.setCostsObservers();
+  }
   removeAllCostsObservers() {
     this.costsObservers = [];
+    this.setCostsObservers();
   }
 }
