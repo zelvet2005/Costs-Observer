@@ -53,6 +53,10 @@ class App {
       "click",
       this.deleteCostsObserverHandler.bind(this)
     );
+    costsObserversContainer.addEventListener(
+      "click",
+      this.changeInfoHanlder.bind(this)
+    );
   }
 
   fillEventListeners(...handlers) {
@@ -188,7 +192,62 @@ class App {
       this.updateUI();
     }
   }
-  changeInfoHanlder() {}
+  changeInfoHanlder(event) {
+    if (
+      event.target.classList.contains("edit-btn") ||
+      event.target.parentElement.classList.contains("edit-btn")
+    ) {
+      const costsObserverElement = event.target.closest(".costs-observer");
+      const costsObserver =
+        this.dataStorage.getCostsObserver(costsObserverElement);
+
+      nameInput.value = costsObserver.name;
+      frequencyInput.value = costsObserver.frequency;
+      limitInput.value = costsObserver.limit;
+      currencyOption.value = costsObserver.currency;
+      manageObserverDialog.showModal();
+
+      const boundCloseDialogHandler = this.closeManageDialogHandler.bind(this);
+      const boundEditObserverHandler = this.editObserverHandler.bind(
+        this,
+        costsObserver
+      );
+
+      manageDialogCloseBtn.addEventListener("click", boundCloseDialogHandler);
+      form.addEventListener("submit", boundEditObserverHandler);
+
+      this.fillEventListeners(
+        {
+          element: manageDialogCloseBtn,
+          type: "click",
+          name: boundCloseDialogHandler,
+        },
+        {
+          element: form,
+          type: "submit",
+          name: boundEditObserverHandler,
+        }
+      );
+    }
+  }
+  editObserverHandler(costsObserver, event) {
+    event.preventDefault();
+
+    costsObserver.name = nameInput.value;
+    costsObserver.limit = +limitInput.value;
+    costsObserver.currency = currencyOption.value;
+    if (costsObserver.frequency !== +frequencyInput.value) {
+      costsObserver.frequency = +frequencyInput.value;
+      costsObserver.updateAfter = costsObserver.computeUpdateAfter();
+    }
+
+    this.updateUI();
+    this.dataStorage.setCostsObservers();
+
+    this.clearForm();
+    this.clearEventListeners();
+    manageObserverDialog.close();
+  }
 }
 
 const app = new App();
