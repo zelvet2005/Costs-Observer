@@ -33,11 +33,11 @@ export class CostObserver {
         <div class="costs-observer" data-id="${this.id}">
           <span class="date-label">Update after <i>${this.updateAfter}</i></span>
           <div class="costs-observer-btns-panel">
-            <button class="delete-btn">
-              <img src="./images/trashbucket.svg" role="img" alt="trash bucket" draggable="false" />
-            </button>
             <button class="edit-btn">
               <img src="./images/pencil.svg" role="img" alt="pencil" draggable="false" />
+            </button>
+            <button class="delete-btn">
+              <img src="./images/trashbucket.svg" role="img" alt="trash bucket" draggable="false" />
             </button>
           </div>
           <h2>${this.name}</h2>
