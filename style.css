@@ -177,7 +177,7 @@ main {
   align-items: center;
   gap: 5%;
   margin-top: 5%;
-  border: 8px solid rgb(72, 222, 12);
+  border: 8px solid;
   border-radius: 100px;
   font-size: 1.6rem;
 }

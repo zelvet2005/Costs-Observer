@@ -57,6 +57,10 @@ class App {
       "click",
       this.changeInfoHanlder.bind(this)
     );
+    costsObserversContainer.addEventListener(
+      "change",
+      this.changeCurrentBalanceHandler.bind(this)
+    );
   }
 
   fillEventListeners(...handlers) {
@@ -146,11 +150,6 @@ class App {
       }
     );
   }
-  closeManageDialogHandler() {
-    this.clearForm();
-    this.clearEventListeners();
-    manageObserverDialog.close();
-  }
   saveInfoHandler(event) {
     event.preventDefault();
 
@@ -175,23 +174,7 @@ class App {
     this.clearEventListeners();
     manageObserverDialog.close();
   }
-  clearForm() {
-    nameInput.value = "";
-    frequencyInput.value = "";
-    limitInput.value = "";
-    currencyOption.value = "₴";
-  }
 
-  deleteCostsObserverHandler(event) {
-    if (
-      event.target.classList.contains("delete-btn") ||
-      event.target.parentElement.classList.contains("delete-btn")
-    ) {
-      const costsObserverElement = event.target.closest(".costs-observer");
-      this.dataStorage.removeCostsObserver(costsObserverElement);
-      this.updateUI();
-    }
-  }
   changeInfoHanlder(event) {
     if (
       event.target.classList.contains("edit-btn") ||
@@ -234,8 +217,14 @@ class App {
     event.preventDefault();
 
     costsObserver.name = nameInput.value;
-    costsObserver.limit = +limitInput.value;
     costsObserver.currency = currencyOption.value;
+    if (costsObserver.limit !== +limitInput.value) {
+      costsObserver.limit = +limitInput.value;
+      if (costsObserver.currentBalance > costsObserver.limit) {
+        costsObserver.currentBalance = costsObserver.limit;
+      }
+      costsObserver.computeFrameColor();
+    }
     if (costsObserver.frequency !== +frequencyInput.value) {
       costsObserver.frequency = +frequencyInput.value;
       costsObserver.updateAfter = costsObserver.computeUpdateAfter();
@@ -248,6 +237,56 @@ class App {
     this.clearEventListeners();
     manageObserverDialog.close();
   }
+
+  closeManageDialogHandler() {
+    this.clearForm();
+    this.clearEventListeners();
+    manageObserverDialog.close();
+  }
+  clearForm() {
+    nameInput.value = "";
+    frequencyInput.value = "";
+    limitInput.value = "";
+    currencyOption.value = "₴";
+  }
+
+  deleteCostsObserverHandler(event) {
+    if (
+      event.target.classList.contains("delete-btn") ||
+      event.target.parentElement.classList.contains("delete-btn")
+    ) {
+      const costsObserverElement = event.target.closest(".costs-observer");
+      this.dataStorage.removeCostsObserver(costsObserverElement);
+      this.updateUI();
+    }
+  }
+
+  changeCurrentBalanceHandler(event) {
+    const costsObserverElement = event.target.closest(".costs-observer");
+    const balanceInput = costsObserverElement.querySelector(".balance");
+    const costsObserver =
+      this.dataStorage.getCostsObserver(costsObserverElement);
+    const updatedBalance = +event.target.value;
+
+    if (updatedBalance < 0) {
+      costsObserver.currentBalance = 0;
+      balanceInput.value = 0;
+    } else if (updatedBalance <= costsObserver.limit) {
+      costsObserver.currentBalance = updatedBalance;
+    } else {
+      costsObserver.currentBalance = costsObserver.limit;
+      balanceInput.value = costsObserver.limit;
+    }
+
+    costsObserver.computeFrameColor();
+    this.dataStorage.setCostsObservers();
+
+    balanceInput.addEventListener("blur", this.updateUI.bind(this), {
+      once: true,
+    });
+  }
+
+  checkCostsHistoryHandler() {}
 }
 
 const app = new App();

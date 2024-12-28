@@ -7,6 +7,13 @@ export class CostObserver {
   updateAfter;
   history;
   id;
+  frameColor;
+
+  colors = {
+    green: "rgb(72, 222, 12)",
+    orange: "orange",
+    red: "red",
+  };
 
   constructor({
     name,
@@ -15,6 +22,7 @@ export class CostObserver {
     currency,
     currentBalance = limit,
     history = [],
+    frameColor = this.colors.green,
     id = null,
     updateAfter = null,
   }) {
@@ -24,6 +32,7 @@ export class CostObserver {
     this.currency = currency;
     this.currentBalance = +currentBalance;
     this.history = history;
+    this.frameColor = frameColor;
     this.id = id ?? this.generateId();
     this.updateAfter = updateAfter ?? this.computeUpdateAfter();
   }
@@ -41,13 +50,13 @@ export class CostObserver {
             </button>
           </div>
           <h2>${this.name}</h2>
-          <div class="balance-container">
+          <div class="balance-container" style="border-color: ${this.frameColor}">
             <div class="balance-limit">
               <input
                 class="balance"
                 type="number"
                 value="${this.currentBalance}"
-                min="1" max="99999" />
+                min="0" max="${this.limit}" />
               <b>/</b>
               <input disabled value="${this.limit}" class="limit" />
             </div>
@@ -69,7 +78,14 @@ export class CostObserver {
     const randomNumber = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
     return `${this.name}-${randomNumber}`;
   }
-
-  changeCurrentBalanceHandler() {}
-  checkCostsHistoryHandler() {}
+  computeFrameColor() {
+    const fraction = this.currentBalance / this.limit;
+    if (fraction > 0.66) {
+      this.frameColor = this.colors.green;
+    } else if (fraction > 0.33) {
+      this.frameColor = this.colors.orange;
+    } else {
+      this.frameColor = this.colors.red;
+    }
+  }
 }
