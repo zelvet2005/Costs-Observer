@@ -68,6 +68,31 @@ export class CostObserver {
         </div>
     `;
   }
+  renderEmptyHistory() {
+    return `
+      <div class="empty-history">
+        <p>History is empty</p>
+      </div>
+    `;
+  }
+  renderHistory() {
+    return `
+      <ul class="costs-history">
+        ${this.history
+          .map((historyObj) => this.renderHistoryElement(historyObj))
+          .join("")}
+      </ul>
+    `;
+  }
+  renderHistoryElement(historyObj) {
+    return `
+      <li>
+        <time class="history-date">${historyObj.date}</time>
+        <span class="history-expenditure">${historyObj.expenditure}</span> 
+        <span class="history-currency">${historyObj.currency}</span>
+      </li>
+    `;
+  }
 
   computeUpdateAfter() {
     const currentDate = new Date();
@@ -89,3 +114,7 @@ export class CostObserver {
     }
   }
 }
+
+// 12/04/2024 - 19/04/2024
+// 760 / 1000
+// $

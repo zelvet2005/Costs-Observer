@@ -19,6 +19,9 @@ const frequencyInput = document.querySelector("#frequency");
 const limitInput = document.querySelector("#limit");
 const currencyOption = document.querySelector("#currency");
 
+const historyDialog = document.querySelector(".history-dialog");
+const historyDialogCloseBtn = historyDialog.querySelector(".close-btn");
+
 class App {
   dataStorage;
 
@@ -60,6 +63,10 @@ class App {
     costsObserversContainer.addEventListener(
       "change",
       this.changeCurrentBalanceHandler.bind(this)
+    );
+    costsObserversContainer.addEventListener(
+      "click",
+      this.checkCostsHistoryHandler.bind(this)
     );
   }
 
@@ -286,7 +293,37 @@ class App {
     });
   }
 
-  checkCostsHistoryHandler() {}
+  checkCostsHistoryHandler(event) {
+    if (event.target.classList.contains("history")) {
+      historyDialog.showModal();
+
+      historyDialogCloseBtn.addEventListener(
+        "click",
+        this.closeHistoryDialogHandler,
+        { once: true }
+      );
+
+      const costsObserverElement = event.target.closest(".costs-observer");
+      const costsObserver =
+        this.dataStorage.getCostsObserver(costsObserverElement);
+
+      if (costsObserver.history.length > 0) {
+        historyDialog.insertAdjacentHTML(
+          "beforeend",
+          costsObserver.renderHistory()
+        );
+      } else {
+        historyDialog.insertAdjacentHTML(
+          "beforeend",
+          costsObserver.renderEmptyHistory()
+        );
+      }
+    }
+  }
+  closeHistoryDialogHandler() {
+    historyDialog.close();
+    historyDialog.lastElementChild.remove();
+  }
 }
 
 const app = new App();
