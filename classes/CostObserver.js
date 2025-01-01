@@ -9,6 +9,8 @@ export class CostObserver {
   id;
   frameColor;
 
+  #maxHistoryLength = 7;
+
   colors = {
     green: "rgb(72, 222, 12)",
     orange: "orange",
@@ -34,7 +36,58 @@ export class CostObserver {
     this.history = history;
     this.frameColor = frameColor;
     this.id = id ?? this.generateId();
-    this.updateAfter = updateAfter ?? this.computeUpdateAfter();
+    this.updateAfter = this.setUpdateAfter(updateAfter);
+  }
+
+  setUpdateAfter(updateAfter) {
+    const currTime = new Date().getTime();
+    const convertedUpdateAfter = new Date(updateAfter).getTime();
+
+    if (updateAfter === null) {
+      return this.computeUpdateAfter();
+    } else if (currTime >= convertedUpdateAfter) {
+      this.refreshCostsObserver(updateAfter);
+      return this.computeUpdateAfter();
+    } else {
+      return updateAfter;
+    }
+  }
+  refreshCostsObserver(updateAfter) {
+    if (this.history.length === this.#maxHistoryLength) {
+      this.history.splice(0, 1);
+    }
+
+    const startSince = new Date(new Date(updateAfter) - this.frequency);
+    const formattedStartSince = startSince.toLocaleDateString("en-US");
+    const dateRange = `${formattedStartSince} - ${updateAfter}`;
+    const expenditure = `${this.currentBalance} / ${this.limit}`;
+    this.history.push({
+      dateRange,
+      expenditure,
+      currency: this.currency,
+    });
+    this.currentBalance = this.limit;
+    this.frameColor = this.colors.green;
+  }
+
+  computeUpdateAfter() {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + this.frequency);
+    return currentDate.toLocaleDateString("en-US");
+  }
+  generateId() {
+    const randomNumber = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+    return `${this.name}-${randomNumber}`;
+  }
+  computeFrameColor() {
+    const fraction = this.currentBalance / this.limit;
+    if (fraction > 0.66) {
+      this.frameColor = this.colors.green;
+    } else if (fraction > 0.33) {
+      this.frameColor = this.colors.orange;
+    } else {
+      this.frameColor = this.colors.red;
+    }
   }
 
   render() {
@@ -87,34 +140,10 @@ export class CostObserver {
   renderHistoryElement(historyObj) {
     return `
       <li>
-        <time class="history-date">${historyObj.date}</time>
+        <time class="history-date">${historyObj.dateRange}</time>
         <span class="history-expenditure">${historyObj.expenditure}</span> 
         <span class="history-currency">${historyObj.currency}</span>
       </li>
     `;
   }
-
-  computeUpdateAfter() {
-    const currentDate = new Date();
-    currentDate.setDate(currentDate.getDate() + this.frequency);
-    return currentDate.toLocaleDateString();
-  }
-  generateId() {
-    const randomNumber = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    return `${this.name}-${randomNumber}`;
-  }
-  computeFrameColor() {
-    const fraction = this.currentBalance / this.limit;
-    if (fraction > 0.66) {
-      this.frameColor = this.colors.green;
-    } else if (fraction > 0.33) {
-      this.frameColor = this.colors.orange;
-    } else {
-      this.frameColor = this.colors.red;
-    }
-  }
 }
-
-// 12/04/2024 - 19/04/2024
-// 760 / 1000
-// $

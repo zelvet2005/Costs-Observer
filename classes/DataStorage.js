@@ -22,6 +22,7 @@ export class DataStorage {
       const costsObserver = new CostObserver(obj);
       this.costsObservers.push(costsObserver);
     });
+    this.setCostsObservers();
   }
 
   getCostsObserver(costsObserverElement) {
