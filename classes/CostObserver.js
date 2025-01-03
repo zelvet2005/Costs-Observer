@@ -57,7 +57,8 @@ export class CostObserver {
       this.history.splice(0, 1);
     }
 
-    const startSince = new Date(new Date(updateAfter) - this.frequency);
+    const startSince = new Date();
+    startSince.setDate(startSince.getDate() - this.frequency);
     const formattedStartSince = startSince.toLocaleDateString("en-US");
     const dateRange = `${formattedStartSince} - ${updateAfter}`;
     const expenditure = `${this.currentBalance} / ${this.limit}`;
